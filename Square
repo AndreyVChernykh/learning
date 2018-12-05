@@ -1,0 +1,36 @@
+using System.Collections.Generic;
+using System;
+
+public class SqInRect {
+	
+	public static List<int> sqInRect(int lng, int wdth) {
+		// your code
+    if (lng == wdth) return null;
+    int TempLng = lng;
+    int TempWdth = wdth;
+    Console.WriteLine("This is length : " + lng + " And this is wdth : " + wdth); 
+    List<int> result = new List<int>();
+    int fullSize = lng * wdth;
+    for (double i = fullSize; fullSize > 0; i = fullSize)
+      {
+        //double temp = Math.Sqrt(i) * Math.Sqrt(i);
+        //Console.WriteLine(temp + " This is temp");
+        if (Math.Sqrt(i) == (int) Math.Sqrt(i) & i > 3)
+          {
+            if (fullSize - (int) i < 0 | Math.Sqrt(i) > lng | Math.Sqrt(i) > wdth)
+              continue;
+            int toResult = TempWdth > TempLng ? TempWdth : TempLng;
+            result.Add(toResult);
+            fullSize =- toResult * toResult;
+          }
+        if (i <= 3)
+          {
+            --fullSize;
+            result.Add(1);
+          }
+      }
+    foreach (int i in result)
+      Console.WriteLine(i);
+		return result;
+	}
+}
